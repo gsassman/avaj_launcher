@@ -1,4 +1,6 @@
-package simulator;
+package inc.weather;
+
+
 
 public class WeatherProvider{
         private static WeatherProvider weatherProvider = new WeatherProvider();
@@ -11,10 +13,25 @@ public class WeatherProvider{
 
         private WeatherProvider()
         {
-
         }
 
-        public static WeatherProvider getProvider(){
+        public static WeatherProvider getProvider()
+        {
+            return WeatherProvider.weatherProvider;
+        }
+
+        private int convertByteToInt(byte[] b)
+        {
+            int value = 0;
+            for(int  i = 0; i < b.length; i++)
+                value = (value << 8) | b[i];
+            return value;
+        }
+
+        public String getCurrentWeather(Coordinates coordinates)
+        {
+            int seed = coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight();
+
+            return weather[seed % 4];
         }
     }
-}

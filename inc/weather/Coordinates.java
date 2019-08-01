@@ -1,10 +1,10 @@
-package simulator;
+package inc.weather;
 
 public class Coordinates 
 {
-    int longitude;
-    int latitude;
-    int height;
+    private int longitude;
+    private int latitude;
+    private int height;
 
 public Coordinates(int longitude, int latitude, int height) 
 {

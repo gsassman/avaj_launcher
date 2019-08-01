@@ -1,13 +1,17 @@
-public class newAircraft{
-    protected String type;
-    protected String name;
-    protected int longitude;
-    protected int latitude;
-    protected int height;
+package  inc.simulator.vehicles;
 
-    type = Aircraft;
-    name = AircraftName;
-    longitude = 0;
-    latitude = 0;
-    height = 0;
+import inc.weather.Coordinates;
+
+public class AircraftFactory {
+    public Flyable newAircraft(String type, String name, int longitude, int latitude, int height){
+        Coordinates coordinates = new Coordinates(longitude, latitude, height);
+
+        if(type.toLowerCase().equals("baloon"))
+            return new Baloon(name, coordinates);
+        else if(type.toLowerCase().equals("jetplane"))
+            return new JetPlane(name, coordinates);
+        else if(type.toLowerCase().equals("helicopter"))
+            return new Helicopter(name, coordinates);
+        return null;
+    }
 }
